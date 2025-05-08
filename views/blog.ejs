@@ -5,8 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Blog | blogTitle</title>
+    <title>The Blog | <%= blog.title %></title>
     <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
     <link rel="stylesheet" href="/stylesheets/blog.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,17 +25,22 @@
 
             <div class="recent-blogs-content">
                 <% blogs.splice(0, 6).forEach((blog, index)=>{ %>
-                    <div class="">
-                        <figure>
-                            <img class="" src="/images/thumbnails/normal/<%= index %>.png" alt="thumbnail">
-                        </figure>
-                        <div>
-                            <p class=""><%= blog.author %> • <%= blog.formatedDate %></p>
-                        </div>
+                    <div>
                         <a href="/blogs/<%= blog.id %>">
-                            <h3 class=""><%= blog.title.slice(0, 20) %> </h3>
+                            <figure>
+                                <img class="recent-blog-image" src="/images/thumbnails/normal/<%= index %>.png" alt="thumbnail">
+                            </figure>
                         </a>
-                        <p class=""><%= blog.description.slice(0, 90) %> </p>
+
+                        <div>
+                            <p class="recent-blog-date"><%= blog.formatedDate %></p>
+                        </div>
+                        <a class="recent-blog-title-wrapper" href="/blogs/<%= blog.id %>">
+                            <h3 class="recent-blog-title"><%= blog.title.slice(0, 20) %> </h3>
+
+                            <img src="/images/arrow-up-right-light.svg" alt="arrow-up-right-light">
+                        </a>
+                        <p class="recent-blog-description"><%= blog.description.slice(0, 90) %> </p>
                     </div>
                 <% }) %>
             </div>
@@ -49,5 +55,6 @@
         </div>
     </div>
 
+    <%- include('partials/footer'); %>
 </body>
 </html>

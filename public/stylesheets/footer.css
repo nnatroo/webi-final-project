@@ -1,0 +1,32 @@
+footer {
+    margin: 0 auto;
+    padding: 60px 0 30px;
+}
+
+.footer-list {
+    display: flex;
+    gap: 14px;
+}
+
+@media (max-width: 768px) {
+    .footer-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.footer-item {
+    font-family: Inter, monospace;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #1A1A1A;
+    transition: 0.2s all;
+}
+
+.footer-link:hover {
+    opacity: 0.8;
+}

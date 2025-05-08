@@ -1,0 +1,58 @@
+body {
+    background-color: #090D1F;
+}
+
+/* Header styles override */
+.burger span {
+    background: #ffffff;
+}
+
+.username p, .nav-link {
+    color: #fff;
+}
+
+/* Footer styles override */
+.footer-item {
+    color: #fff;
+}
+
+.about-wrapper {
+    margin: 0 auto;
+}
+
+.title {
+    color: #fff;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    font-size: 180px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    margin-top: 50px;
+}
+
+@media (max-width: 1440px) {
+    .title {
+        font-size: 180px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: 60px;
+    }
+}
