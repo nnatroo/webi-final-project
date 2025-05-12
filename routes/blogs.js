@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
-
-const BLOGS_FILE = 'blogs.json';
+const Blog = require("../models/blog");
 
 const requireAuth = (req, res, next) => {
     if (req.session.user) {
@@ -13,9 +11,8 @@ const requireAuth = (req, res, next) => {
     }
 }
 
-router.get('/', requireAuth, function (req, res, next) {
-    const blogs = JSON.parse(fs.readFileSync(BLOGS_FILE));
-
+router.get('/', requireAuth, async function (req, res, next) {
+    const blogs = await Blog.find({}).sort({date: -1});
     const email = req.session.user.email;
 
     res.render('blogs', {blogs, email});
@@ -33,7 +30,6 @@ router.post('/new', requireAuth, function (req, res, next) {
         res.render("new_blog", {error: "Missing title or content"});
     }
 
-    const blogs = JSON.parse(fs.readFileSync(BLOGS_FILE));
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
@@ -54,7 +50,7 @@ router.post('/new', requireAuth, function (req, res, next) {
     ];
     const currentMonthString = months[currentMonth];
     const formatedDate = `${currentDay} ${currentMonthString} ${currentYear}`;
-    const newBlog = {
+    const newBlogData = {
         id: String(Date.now()),
         title,
         description,
@@ -64,22 +60,28 @@ router.post('/new', requireAuth, function (req, res, next) {
         formatedDate
     }
 
-    blogs.unshift(newBlog);
-    fs.writeFileSync(BLOGS_FILE, JSON.stringify(blogs, null, 2));
-    res.redirect('/blogs');
+    try {
+        const newBlog = new Blog(newBlogData);
+        newBlog.save();
+        res.redirect('/blogs');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/new');
+    }
 });
 
-router.get('/:blogId', requireAuth, function (req, res, next) {
+router.get('/:blogId', requireAuth, async function (req, res, next) {
     const email = req.session.user.email;
-    const { blogId } = req.params
+    const {blogId} = req.params
 
-    const data = fs.readFileSync(BLOGS_FILE)
-    const blogs = JSON.parse(data);
-
-    const blog = blogs.find(blog => blog.id === blogId);
-    console.log(blog);
-
-    res.render('blog', { email, blogs, blog });
+    try {
+        const blogs = await Blog.find();
+        const blog = await Blog.findOne({id: blogId});
+        res.render('blog', {email, blogs, blog});
+    } catch (err) {
+        console.log(err);
+        res.redirect('/404')
+    }
 });
 
 module.exports = router;
