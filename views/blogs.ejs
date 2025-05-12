@@ -32,7 +32,7 @@
         <div class="primary-card">
             <figure>
                 <a href="/blogs/<%= blogs[0].id %>">
-                    <img class="primary-card-img" src="/images/thumbnails/wide/1.png" alt="thumbnail">
+                    <img width="594" height="228" class="primary-card-img" src="<%= blogs[0].image %>" alt="thumbnail">
                 </a>
             </figure>
             <div>
@@ -56,7 +56,8 @@
             <div class="secondary-blog-wrapper">
                 <a href="/blogs/<%= blogs[1].id %>">
                     <figure>
-                        <img class="secondary-blog-img" src="/images/thumbnails/1.png" alt="thumbnail">
+                        <img width="320" height="200" class="secondary-blog-img" src="<%= blogs[1].image %>"
+                             alt="thumbnail">
                     </figure>
                 </a>
 
@@ -76,7 +77,8 @@
             <div class="secondary-blog-wrapper">
                 <a href="/blogs/<%= blogs[2].id %>">
                     <figure>
-                        <img class="secondary-blog-img" src="/images/thumbnails/2.png" alt="thumbnail">
+                        <img width="320" height="200" class="secondary-blog-img" src="<%= blogs[2].image %>"
+                             alt="thumbnail">
                     </figure>
                 </a>
                 <div>
@@ -97,7 +99,8 @@
     <div class="recent-blogs-content-below-card">
         <a href="/blogs/<%= blogs[3].id %>">
             <figure class="recent-blogs-content-below-card-img-wrapper">
-                <img class="recent-blogs-content-below-card-img" src="/images/thumbnails/wide/2.png" alt="">
+                <img width="592" height="246" class="recent-blogs-content-below-card-img"
+                     src="<%= blogs[3].image %>" alt="">
             </figure>
         </a>
         <div class="recent-blogs-content-below-card-content">
@@ -124,7 +127,7 @@
             <div class="all-blogs-card">
                 <a href="/blogs/<%= blog.id %>">
                     <figure>
-                        <img class="all-blogs-img" src="/images/thumbnails/normal/<%= index %>.png" alt="thumbnail">
+                        <img width="384" height="240" class="all-blogs-img" src="<%= blog.image %>" alt="thumbnail">
                     </figure>
                 </a>
                 <div>

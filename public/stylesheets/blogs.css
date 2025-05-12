@@ -325,9 +325,6 @@ a:hover {
     width: 100%;
 }
 
-@media (max-width: 768px) {
-    /*.all-blogs-img {*/
-    /*    height: 140px;*/
-    /*    object-fit: cover;*/
-    /*}*/
+img {
+    object-fit: cover;
 }
