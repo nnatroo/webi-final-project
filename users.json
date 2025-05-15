@@ -46,5 +46,9 @@
   {
     "email": "123456789@gmail.com",
     "password": "$2b$10$cqkQPFy86AXmq34p9Pyd7eHt121ZZRpCeyKRfuXSPOHsRKf4oWZ.2"
+  },
+  {
+    "email": "goat9@gmail.com",
+    "password": "$2b$10$xjSRpdWu6F3dSj78t7jVuuNZrYW4cD7ptTnVNVHEwxCoBJFXISlNy"
   }
 ]
