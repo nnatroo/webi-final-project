@@ -216,6 +216,16 @@ body {
     opacity: 0.7;
 }
 
+.comment-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #111827;
+    border-radius: 12px;
+    margin-top: 32px;
+    padding: 24px;
+}
+
+
 .comment-header {
     display: flex;
     justify-content: space-between;
@@ -250,4 +260,89 @@ body {
     line-height: 20px;
     letter-spacing: 0;
     color: #6B7280;
+}
+
+.comment-content {
+    font-family: Inter, monospace;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25.6px;
+    letter-spacing: 0;
+    color: #FFF;
+    margin-top: 18px;
+}
+
+.reply-btn {
+    font-family: Inter, monospace;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #4318D1;
+    margin-top: 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s all;
+    align-self: flex-start;
+}
+
+
+.reply-btn:hover {
+    opacity: 0.7;
+}
+
+.likes-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.likes-wrapper:hover {
+    opacity: 0.7;
+}
+
+.likes-count {
+    font-family: Inter, monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: center;
+    color:  #4318D1;
+}
+
+.reply-input-wrapper {
+    align-self: flex-end;
+    width: 90%;
+    margin-top: 25px;
+    display: none;
+}
+
+.reply-input {
+    font-family: Inter, monospace;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0;
+    height: 120px;
+    width: 100%;
+    border: #374151 solid 1px;
+    padding: 10px;
+    background-color: #111827;
+    border-radius: 8px;
+    resize: none;
+    outline: none;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.show {
+    display: flex;
 }

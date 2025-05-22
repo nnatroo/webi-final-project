@@ -81,9 +81,28 @@
                                     }) %></p>
                             </div>
                         </figure>
+
+
+                        <form action="/blogs/<%= blog.id %>/comment/<%= comment.id %>/like" method="POST">
+                            <button class="likes-wrapper">
+                                <% if (comment.likes.includes(email)) { %>
+                                    <img src="/images/like-icon-red.svg" alt="like-svg">
+                                <% } else { %>
+                                        <img src="/images/like-icon.svg" alt="like-svg">
+                                <% } %>
+                                <p class="likes-count"><%= comment.likes.length%></p>
+                            </button>
+                        </form>
                     </div>
 
-                    <p> <%= comment.content %></p>
+                    <p class="comment-content"> <%= comment.content %></p>
+
+                    <button class="reply-btn">Reply</button>
+
+                    <form class="reply-input-wrapper" action="/blogs/<%= blog.id %>/newComment" method="POST">
+                        <textarea class="reply-input" name="newComment" placeholder="Reply..."></textarea>
+                        <button class="blog-comment-button">Post Reply</button>
+                    </form>
                 </div>
             <% }) %>
         </section>
@@ -91,6 +110,8 @@
 </div>
 
 
-<%- include('partials/footer'); %>
+    <%- include('partials/footer'); %>
+
+    <script src="/javascripts/reply-input.js"></script>
 </body>
 </html>
