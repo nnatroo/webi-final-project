@@ -88,4 +88,54 @@ router.get('/:blogId', requireAuth, async function (req, res, next) {
     }
 });
 
+router.post('/:blogId/newComment', requireAuth, async function (req, res, next) {
+    const {blogId} = req.params
+    const {newComment} = req.body;
+
+    try {
+        const comment = {
+            id: String(Date.now()),
+            content: newComment,
+            author: req.session.user.email,
+            replies: []
+        }
+
+        const res = await Blog.updateOne({id: blogId}, {$push: {comments: comment}});
+
+
+    } catch (err) {
+        console.log(err);
+    }
+
+    res.redirect(`/blogs/${blogId}`);
+});
+
+router.post('/:blogId/comment/:commentId/like', requireAuth, async function (req, res, next) {
+    const {blogId, commentId} = req.params
+    const {email} = req.session.user;
+
+    try {
+        const blog = await Blog.findOne(
+            {id: blogId, "comments.id": commentId}
+        )
+        const comment = blog.comments.find(comment => comment.id === commentId);
+
+        const hasLiked = comment.likes && comment.likes.includes(email);
+        const updateOperation = hasLiked
+            ? {$pull: {"comments.$.likes": email}}
+            : {$push: {"comments.$.likes": email}};
+
+        const result = await Blog.updateOne(
+            {id: blogId, "comments.id": commentId}
+            , updateOperation
+        )
+
+        console.log(result)
+
+        res.redirect(`/blogs/${blogId}`);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 module.exports = router;
